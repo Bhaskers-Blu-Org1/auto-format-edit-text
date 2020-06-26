@@ -18,23 +18,7 @@ public class MainActivity extends AppCompatActivity {
         ActivityMainBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         final FormatObservable observable = new FormatObservable();
         observable.format.set("+1(###) ###-####");
+        observable.hideMask.set("+1(***) ***-[6][7][8][9]--[6-9]");
         binding.setObservable(observable);
-
-//        binding.phoneNumberAutoFormatEditText.setOnChangeListener(
-//                new AbstractAutoEditText.AutoFormatTextChangeListener() {
-//                    @Override
-//                    public void onUnformattedTextChanged(String text) {
-//                        Log.i("XXX", text);
-//                    }
-//        });
-
-//        observable.formattedText.addOnPropertyChangedCallback(new Observable.OnPropertyChangedCallback() {
-//            @Override
-//            public void onPropertyChanged(Observable sender, int propertyId) {
-//                Log.i("XXX", observable.formattedText.get());
-//            }
-//        });
-
-
     }
 }

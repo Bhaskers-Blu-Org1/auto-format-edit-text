@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <declare-styleable name="AbstractAutoEditText">
+        <attr name="inputFormatEnabled" format="string" />
+        <attr name="staticFormatEnabled" format="string" />
+    </declare-styleable>
     <declare-styleable name="AutoFormatEditText">
-        <attr name="format" format="string" />
         <attr name="placeholder" format="string" />
+        <attr name="inputMask" format="string" />
+        <attr name="staticMask" format="string" />
     </declare-styleable>
 </resources>

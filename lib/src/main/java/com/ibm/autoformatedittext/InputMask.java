@@ -1,29 +1,29 @@
 package com.ibm.autoformatedittext;
 
 @SuppressWarnings("WeakerAccess")
-public class Formatter {
+public class InputMask {
     private char placeholder;
-    private String format;
+    private String maskString;
     private Integer unformattedLength;
 
-    public Formatter(String format, char placeholder) {
-        this.format = format;
+    public InputMask(String maskString, char placeholder) {
+        this.maskString = maskString;
         this.placeholder = placeholder;
     }
 
     //Returns true if the character in the format at the specified index is the placeholder character
     public boolean isPlaceholder(int index) {
-        return index < format.length() && format.charAt(index) == placeholder;
+        return index < maskString.length() && maskString.charAt(index) == placeholder;
     }
 
     //Returns true if the specified string matches the format
     public boolean matches(String formattedString) {
-        if (format.length() != formattedString.length()) {
+        if (maskString.length() != formattedString.length()) {
             return false;
         }
 
-        for (int i = 0; i < format.length(); i++) {
-            char currentChar = format.charAt(i);
+        for (int i = 0; i < maskString.length(); i++) {
+            char currentChar = maskString.charAt(i);
             if (currentChar != placeholder && currentChar != formattedString.charAt(i)) {
                 return false;
             }
@@ -36,8 +36,8 @@ public class Formatter {
         if (unformattedLength == null) {
             unformattedLength = 0;
 
-            for (int i = 0; i < format.length(); i++) {
-                if (format.charAt(i) == placeholder) {
+            for (int i = 0; i < maskString.length(); i++) {
+                if (maskString.charAt(i) == placeholder) {
                     unformattedLength++;
                 }
             }
@@ -54,8 +54,8 @@ public class Formatter {
         }
 
         int unformattedTextPosition = 0;
-        for (int i = 0; i < format.length(); i++) {
-            if (format.charAt(i) == placeholder) {
+        for (int i = 0; i < maskString.length(); i++) {
+            if (maskString.charAt(i) == placeholder) {
                 if (unformattedTextPosition == unformattedText.length()) {
                     break;
                 }
@@ -63,7 +63,7 @@ public class Formatter {
                 builder.append(unformattedText.charAt(unformattedTextPosition));
                 unformattedTextPosition++;
             }else {
-                builder.append(format.charAt(i));
+                builder.append(maskString.charAt(i));
             }
         }
 
@@ -75,7 +75,7 @@ public class Formatter {
 
         if (formattedText.length() > 0) {
             for (int i = start; i < end; i++) {
-                if (format.charAt(i) == placeholder) {
+                if (maskString.charAt(i) == placeholder) {
                     builder.append(formattedText.charAt(i));
                 }
             }
@@ -84,12 +84,12 @@ public class Formatter {
         return builder.toString();
     }
 
-    public String getFormat() {
-        return format;
+    public String getMaskString() {
+        return maskString;
     }
 
-    public void setFormat(String format) {
-        this.format = format;
+    public void setMaskString(String maskString) {
+        this.maskString = maskString;
         this.unformattedLength = null;
     }
 }
